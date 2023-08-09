@@ -1,0 +1,24 @@
+"use strict";
+
+function lotteryNum() {
+	return (Math.round(Math.random() * 100) % 58) + 1;
+}
+
+function pickNumber(num, nums) {
+	if (!nums.includes(num)){
+		nums = [...nums, num];
+		nums.sort(function ascend(i, j){
+			return i - j; 
+		})
+	}
+	return nums;
+}
+
+var luckyLotteryNumbers = [];
+const count = 6;
+
+while (luckyLotteryNumbers.length < count) {
+	luckyLotteryNumbers = pickNumber(lotteryNum(), Object.freeze(luckyLotteryNumbers));
+}
+
+console.log(luckyLotteryNumbers);
